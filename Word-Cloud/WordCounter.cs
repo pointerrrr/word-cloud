@@ -22,6 +22,11 @@ namespace Word_Cloud
             wordCounterSettings = settings;
         }
 
+        /// <summary>
+        /// Count the words in the string text.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public List<(string, int)> CountFromString(string text)
         {
             // replace new lines with spaces
@@ -55,6 +60,11 @@ namespace Word_Cloud
             return wordCount;
         }
 
+        /// <summary>
+        /// Load file at filePath as a string and count the words in it.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public List<(string, int)> CountFromFile(string filePath)
         {
             try
@@ -74,6 +84,7 @@ namespace Word_Cloud
         }
 
         // Taken from https://stackoverflow.com/questions/421616/how-can-i-strip-punctuation-from-a-string
+        // Removes punctuation from input. The split character is there to ensure it does not get removed if it is also a punctuation mark.
         private static string StripPunctuation(string input, char splitCharacter)
         {
             var sb = new StringBuilder();
@@ -86,6 +97,7 @@ namespace Word_Cloud
         }
 
         // Taken from https://stackoverflow.com/questions/249087/how-do-i-remove-diacritics-accents-from-a-string-in-net
+        // Removes all the diacritics from the string text, eg. turns crême into creme.
         private static string RemoveDiacritics(string text)
         {
             var normalizedString = text.Normalize(NormalizationForm.FormD);
